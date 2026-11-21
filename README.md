@@ -1,1 +1,1 @@
-Relogio em HTML, CSS e JavaScript, feito em algumas horas por mim.
+Relogio 3D em HTML, CSS, JavaScript e Three.js (interações 3D).

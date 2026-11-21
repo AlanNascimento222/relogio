@@ -1,150 +1,68 @@
-@import url('https://fonts.cdnfonts.com/css/ds-digital');
-
-
 body {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
     margin: 0;
-    gap: 20px;
+    overflow: hidden;
     background: #2A7B9B;
     background: linear-gradient(20deg, rgba(42, 123, 155, 1) 0%, rgba(255, 102, 122, 1) 100%);
-    justify-content: center;
-    align-items: center;
-    font-family: 'Montserrat', 'sans-serif';
+    font-family: 'Montserrat', sans-serif;
     user-select: none;
 }
 
-main {
+/* fundo transparente: deixa o degradê do body aparecer atrás */
+canvas {
+    position: fixed;
+    inset: 0;
+    display: block;
+    cursor: grab;
+}
+
+canvas:active {
+    cursor: grabbing;
+}
+
+#btnGirar {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
     z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #000000;
-    width: 80%;
-    height: 45%;
-    border-radius: 5px;
-    justify-content: center;
-
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.92);
+    font: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-#semanaContainer{
+#btnGirar:hover,
+#btnGirar.ativo {
+    background: rgba(255, 255, 255, 0.26);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+#btnGirar:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+@media (max-width: 520px) {
+    #btnGirar {
+        bottom: 44px;
+    }
+}
+
+#dica {
+    position: fixed;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    pointer-events: none;
     z-index: 10;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 15%;
-    background-color: #f4f4f4;
-    text-align: center;
-
-}
-
-#semana {
-    z-index: 11;
-    color: #000000;
-    font-size: 4rem;
-    font-weight: 600;
-}
-
-#numberContainer{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    border-radius: 5px;
-    width: 90%;
-    height: 90%;
-    gap: 0px;
-    color: #2b2b2b;
-    
-    
-    
-    #hora, #minuto, #segundo {
-    display: flex;
-    font-size: 8rem;
-    color: #e6e6e6;
-    width: 8ch;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
-    }
-}
-
-
-.separa {
-    font-size: 4rem;
-    color: #2b2b2b;
-    animation: pulse 3s infinite;
-    font-weight: 600;
-}
-
-
-/* animações */
-
-@keyframes pulse {
-    0% {
-        color: #2b2b2b;
-    }
-    
-    50% {
-        color: #0a0a0a;
-    }
-
-    100% {
-        color: #2b2b2b;
-    }
-}
-
-@media screen and (max-width: 815px) {
-    #semanaContainer {
-        width: 60%;
-        height: 10%;
-    }
-
-    #semana {
-        font-size: 2rem;
-    }
-
-    #numberContainer{
-        #hora, #minuto, #segundo {
-            font-size: 4rem;
-        }
-    }
-    
-    .separa{
-        font-size: 2rem;
-    }
-
-    main {
-        width: 90%;
-        height: 25%;
-    }
-}
-
-@media screen and (max-width: 420px) {
-    #semanaContainer {
-        width: 40%;
-        height: 5%;
-    }
-
-    #semana {
-        font-size: 1rem;
-    }
-
-    #numberContainer{
-        #hora, #minuto, #segundo {
-            font-size: 2rem;
-        }
-    }
-    
-    .separa{
-        font-size: 1rem;
-    }
-
-    main {
-        width: 90%;
-        height: 15%;
-    }
 }
