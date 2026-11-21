@@ -8,8 +8,7 @@ body {
     user-select: none;
 }
 
-/* o canvas do three.js ocupa a tela toda, com fundo transparente
-   (assim o seu degradê continua aparecendo atrás) */
+/* fundo transparente: deixa o degradê do body aparecer atrás */
 canvas {
     position: fixed;
     inset: 0;
