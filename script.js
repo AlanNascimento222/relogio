@@ -13,7 +13,41 @@ controls.target.set(0, 1.2, 0)
 controls.enableDamping = true
 controls.minDistance = 4
 controls.maxDistance = 30
+controls.autoRotateSpeed = 0.6 // ~100s por volta completa
 controls.update()
+
+const btnGirar = document.getElementById('btnGirar')
+const CHAVE_GIRAR = 'relogio:girar'
+
+function lerGirarSalvo() {
+    try {
+        return localStorage.getItem(CHAVE_GIRAR)
+    } catch {
+        return null
+    }
+}
+
+const salvo = lerGirarSalvo()
+let girando = salvo === null
+    ? !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    : salvo === 'true'
+
+function atualizarGirar() {
+    controls.autoRotate = girando
+    btnGirar.textContent = girando ? 'Girar: ligado' : 'Girar: desligado'
+    btnGirar.setAttribute('aria-pressed', String(girando))
+    btnGirar.classList.toggle('ativo', girando)
+}
+
+btnGirar.addEventListener('click', () => {
+    girando = !girando
+    try {
+        localStorage.setItem(CHAVE_GIRAR, String(girando))
+    } catch {}
+    atualizarGirar()
+})
+
+atualizarGirar()
 
 scene.add(new THREE.AmbientLight(0xffffff, 0.7))
 const luz = new THREE.DirectionalLight(0xffffff, 0.8)
